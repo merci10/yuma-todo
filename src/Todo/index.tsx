@@ -1,54 +1,55 @@
-import React, {useState } from 'react';
-import './index.css';
+import React, { useState, useEffect } from 'react';
+import { Todo, TodoForm } from './components';
+import { TodoInfo } from './type';
+// import styles from './todo.module.css';
 
-type todoInfo = {
-  id: number,
-  content: string,
-  isCompleted: boolean,
-}
+let id = 0;
+const getId = () => id = id + 1;
 
-function Todo(props: {name: string}) {
-  const [id, setId] = useState(0);
-  const [content, setContent] = useState('');
-  const [todoList, setTodoList] = useState<todoInfo[]>([]);
+function TodoApp(props: { name: string }) {
+  const [todoList, setTodoList] = useState<TodoInfo[]>([]);
 
-  const addTodo = (): void => {
+  const addTodo = (content: string): void => {
     if (!content) return;
 
-    setId(prev => prev + 1);
-    setTodoList(prev => [...prev, {id, content, isCompleted: false}]);
+    setTodoList(prev => [...prev, { id: getId(), content, isCompleted: false }]);
   }
 
-  const removeTodo = (todo: todoInfo): void => {
-    const id = todo.id;
-    setTodoList(prev => prev.filter(a => a.id !== id));
+  const removeTodo = (id: number): void => {
+    setTodoList(prev => prev.filter(todo => todo.id !== id));
   }
 
-  const toggleIsCompleted = (todo: todoInfo): void => {
-    const id = todo.id;
-    setTodoList(prev => prev.map((a) => {
-      if (a.id !== id) return a;
-      return {...a, isCompleted: !a.isCompleted}
+  const toggleIsCompleted = (id: number): void => {
+    setTodoList(prev => prev.map((todo) => {
+      if (todo.id !== id) return todo;
+      return { ...todo, isCompleted: !todo.isCompleted }
     }));
   }
 
+  // 初期レンダリング時に値を取得
+  useEffect(() => {
+    const value = window.localStorage.getItem('todoList');
+    if (value === null) return;
+    setTodoList(JSON.parse(value));
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('todoList', JSON.stringify(todoList));
+  }, [todoList]);
+
   return (
     <div>
-      <input type="text" value={content} onChange={e => setContent(e.target.value)} />
-      <button onClick={() => {
-        addTodo();
-        setContent("");
-      }}>
-        add
-      </button>
+      <TodoForm addTodo={addTodo} />
       <p>{props.name} のTodoリスト</p>
       <ul>
-        {todoList.map(todo => {
+        {todoList.map((todo) => {
           return (
             <li key={todo.id}>
-              <input type="checkbox" onClick={() => toggleIsCompleted(todo)}/>
-              {todo.content}
-              <input type="button" value="x" onClick={() => removeTodo(todo)}/>
+              <Todo
+                todo={todo}
+                removeTodo={removeTodo}
+                toggleIsCompleted={toggleIsCompleted}
+              />
             </li>
           )
         })}
@@ -57,4 +58,4 @@ function Todo(props: {name: string}) {
   );
 }
 
-export default Todo;
+export default TodoApp;
