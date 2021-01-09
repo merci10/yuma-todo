@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Todo, TodoForm } from './components';
 import { TodoInfo } from './type';
-// import styles from './todo.module.css';
+import styles from './index.module.css';
 
 let id = 0;
 const getId = () => id = id + 1;
@@ -38,13 +38,13 @@ function TodoApp(props: { name: string }) {
   }, [todoList]);
 
   return (
-    <div>
+    <div className={styles.todoApp}>
+      <p className={styles.todoAppTitle}>{props.name} のTodoリスト</p>
       <TodoForm addTodo={addTodo} />
-      <p>{props.name} のTodoリスト</p>
-      <ul>
+      <ul className={styles.todoAppTodos}>
         {todoList.map((todo) => {
           return (
-            <li key={todo.id}>
+            <li className={styles.todoAppTodo} key={todo.id}>
               <Todo
                 todo={todo}
                 removeTodo={removeTodo}

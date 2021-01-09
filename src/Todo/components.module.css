@@ -1,0 +1,43 @@
+/* =====================================================
+
+todoForm
+
+===================================================== */
+
+.todoForm {
+  padding-top: 20px;
+  vertical-align: middle;
+}
+
+.todoFormInput {
+  width: 60%;
+  padding: 4px 8px;
+  font-size: 20px;
+  color: #616161;
+  border-radius: 3px;
+  border-color: #BDBDBD;
+  border-width: 1px;
+  outline: none;
+}
+
+.todoFormSubmit {
+  height: 33px;
+  margin-left: 16px;
+  padding: 4px 16px;
+  font-size: 16px;
+  color: #616161;
+  background-color: #E0E0E0;
+  border-radius: 3px;
+  border-color: #BDBDBD;
+  border-width: 1px;
+  vertical-align: top;
+  outline: none;
+}
+
+/* =====================================================
+
+todo
+
+===================================================== */
+
+/* .todo {} */
