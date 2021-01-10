@@ -42,13 +42,13 @@ type TodosProps = {
 
 export function Todos(props: TodosProps) {
   return (
-    <ul className={styles.todoAppTodos}>
+    <ul className={styles.todos}>
       {props.todoList.map((todo) => {
         return (
-          <li className={styles.todoAppTodo} key={todo.id}>
-            <input className={styles.todoCompletedCheckBox} type="checkbox" onClick={() => props.toggleIsCompleted(todo.id)} />
-            {todo.content}
-            <input className={styles.todoRemoveBtn} type="button" value="x" onClick={() => props.removeTodo(todo.id)} />
+          <li className={styles.todosTodo} key={todo.id}>
+            <input className={styles.todosCompletedCheckBox} type="checkbox" onClick={() => props.toggleIsCompleted(todo.id)} />
+            <div className={styles.todosContent}>{todo.content}</div>
+            <input className={styles.todosRemoveBtn} type="button" value="x" onClick={() => props.removeTodo(todo.id)} />
           </li>
         )
       })}

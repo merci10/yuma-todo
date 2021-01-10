@@ -14,17 +14,3 @@
   letter-spacing: 1px;
   color: #616161;
 }
-
-.todoAppTodos {
-  padding: 0;
-  width: 100%;
-  list-style: none;
-}
-
-.todoAppTodo {
-  padding: 20px 16px;
-  background-color: #E0E0E0;
-  margin-top: 12px;
-  color: #616161;
-  border-radius: 3px;
-}

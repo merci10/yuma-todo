@@ -36,8 +36,39 @@ todoForm
 
 /* =====================================================
 
-todo
+todos
 
 ===================================================== */
 
-/* .todo {} */
+.todos {
+  padding: 0;
+  width: 100%;
+  list-style: none;
+}
+
+.todosTodo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px;
+  background-color: #E0E0E0;
+  margin-top: 12px;
+  color: #616161;
+  border-radius: 3px;
+}
+
+.todosCompletedCheckBox {
+  display: block;
+  margin-right: 20px;
+}
+
+.todosContent {
+  word-break: break-all;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.todosRemoveBtn {
+  display: block;
+  margin-left: 20px;
+}
