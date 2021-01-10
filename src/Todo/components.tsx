@@ -34,18 +34,25 @@ Todo
 
 ===================================================== */
 
-type TodoProps = {
-  todo: TodoInfo,
+type TodosProps = {
+  todoList: TodoInfo[],
   removeTodo: (id: number) => void,
   toggleIsCompleted: (id: number) => void
 }
 
-export function Todo(props: TodoProps) {
+export function Todos(props: TodosProps) {
   return (
-    <div className={styles.todo}>
-      <input className={styles.todoCompletedCheckBox} type="checkbox" onClick={() => props.toggleIsCompleted(props.todo.id)} />
-      {props.todo.content}
-      <input className={styles.todoRemoveBtn} type="button" value="x" onClick={() => props.removeTodo(props.todo.id)} />
-    </div>
+    <ul className={styles.todoAppTodos}>
+      {props.todoList.map((todo) => {
+        return (
+          <li className={styles.todoAppTodo} key={todo.id}>
+            <input className={styles.todoCompletedCheckBox} type="checkbox" onClick={() => props.toggleIsCompleted(todo.id)} />
+            {todo.content}
+            <input className={styles.todoRemoveBtn} type="button" value="x" onClick={() => props.removeTodo(todo.id)} />
+          </li>
+        )
+      })}
+    </ul>
+
   )
 }

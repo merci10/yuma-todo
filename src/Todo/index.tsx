@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Todo, TodoForm } from './components';
+import { Todos, TodoForm } from './components';
 import { TodoInfo } from './type';
 import styles from './index.module.css';
 
@@ -41,19 +41,11 @@ function TodoApp(props: { name: string }) {
     <div className={styles.todoApp}>
       <p className={styles.todoAppTitle}>{props.name} のTodoリスト</p>
       <TodoForm addTodo={addTodo} />
-      <ul className={styles.todoAppTodos}>
-        {todoList.map((todo) => {
-          return (
-            <li className={styles.todoAppTodo} key={todo.id}>
-              <Todo
-                todo={todo}
-                removeTodo={removeTodo}
-                toggleIsCompleted={toggleIsCompleted}
-              />
-            </li>
-          )
-        })}
-      </ul>
+      <Todos
+        todoList={todoList}
+        removeTodo={removeTodo}
+        toggleIsCompleted={toggleIsCompleted}
+      />
     </div>
   );
 }
