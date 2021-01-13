@@ -5,15 +5,10 @@ todoForm
 ===================================================== */
 
 .todoForm {
+  display: flex;
+  justify-content: space-between;
   padding-top: 20px;
   vertical-align: middle;
-}
-
-.todoForm::after {
-  content: '';
-  display: block;
-  height: 0;
-  clear: both;
 }
 
 .todoFormInput {
@@ -28,9 +23,7 @@ todoForm
 }
 
 .todoFormSubmit {
-  float: right;
   height: 33px;
-  margin-left: 16px;
   padding: 4px 16px;
   font-size: 16px;
   color: #616161;
