@@ -45,10 +45,20 @@ export function Todos(props: TodosProps) {
     <ul className={styles.todos}>
       {props.todoList.map((todo) => {
         return (
-          <li className={styles.todosTodo} key={todo.id}>
-            <input className={styles.todosCompletedCheckBox} type="checkbox" onClick={() => props.toggleIsCompleted(todo.id)} />
+          <li className={`${styles.todosTodo} ${todo.isCompleted ? styles.todosCompleted : ''}`} key={todo.id}>
+            <input
+              className={styles.todosCompletedCheckBox}
+              type="checkbox"
+              checked={todo.isCompleted}
+              onChange={() => props.toggleIsCompleted(todo.id)}
+            />
             <div className={styles.todosContent}>{todo.content}</div>
-            <input className={styles.todosRemoveBtn} type="button" value="x" onClick={() => props.removeTodo(todo.id)} />
+            <input
+              className={styles.todosRemoveBtn}
+              type="button"
+              value="x"
+              onClick={() => props.removeTodo(todo.id)}
+            />
           </li>
         )
       })}

@@ -51,24 +51,27 @@ todos
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px;
-  background-color: #E0E0E0;
+  background-color: #616161;
   margin-top: 12px;
-  color: #616161;
+  color: #E0E0E0;
   border-radius: 3px;
 }
 
+.todosCompleted {
+  background-color: #E0E0E0;
+}
+
 .todosCompletedCheckBox {
-  display: block;
   margin-right: 20px;
 }
 
 .todosContent {
-  word-break: break-all;
+  width: 100%;
+  word-break: break-word;
   font-size: 20px;
   line-height: 1.4;
 }
 
 .todosRemoveBtn {
-  display: block;
   margin-left: 20px;
 }
