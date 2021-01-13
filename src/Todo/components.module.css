@@ -9,6 +9,13 @@ todoForm
   vertical-align: middle;
 }
 
+.todoForm::after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+}
+
 .todoFormInput {
   width: 60%;
   padding: 4px 8px;
@@ -21,6 +28,7 @@ todoForm
 }
 
 .todoFormSubmit {
+  float: right;
   height: 33px;
   margin-left: 16px;
   padding: 4px 16px;
