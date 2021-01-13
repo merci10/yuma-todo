@@ -29,12 +29,15 @@ function TodoApp(props: { name: string }) {
   // 初期レンダリング時に値を取得
   useEffect(() => {
     const value = window.localStorage.getItem('todoList');
-    if (value === null) return;
+    const idStr = window.localStorage.getItem('todoId');
+    if (value === null || idStr === null) return;
     setTodoList(JSON.parse(value));
+    id = parseInt(idStr, 10);
   }, [])
 
   useEffect(() => {
     window.localStorage.setItem('todoList', JSON.stringify(todoList));
+    window.localStorage.setItem('todoId', id.toString());
   }, [todoList]);
 
   return (
